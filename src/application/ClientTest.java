@@ -14,7 +14,7 @@ public class ClientTest implements Runnable {
 		serverConnection = new Socket();
 		try {
 			serverConnection.connect(new InetSocketAddress(ip, Integer.parseInt(port)));
-			
+
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,7 +156,7 @@ public class ClientTest implements Runnable {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			out = new PrintWriter(serverConnection.getOutputStream(), true);
-			WriteMessage(System.currentTimeMillis(),"GOT","Mein name ist Friedemann");
+			WriteMessage(System.currentTimeMillis(), "GOT", "Mein name ist Friedemann");
 			while (true) {
 				String input = in.readLine();
 				out.println(input);

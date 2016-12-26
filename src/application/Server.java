@@ -17,10 +17,10 @@ public class Server implements Runnable {
 		System.out.println(address.toString());
 	}
 	/**
-	 * Standard Run Methode für den Server:
-	 * Diese wird von der Main-Methode aufgerufen und ist verantwortlich für das annehmen von Clients
-	 * Wenn ein Client verbunden wird, wird ein neuer Client-Handler für ihn erstellt.
-	 * Dieser ist verantwortlich für das interpretieren der Nachrichten des Clients
+	 * Standard Run Methode fuer den Server:
+	 * Diese wird von der Main-Methode aufgerufen und ist verantwortlich fuer das annehmen von Clients
+	 * Wenn ein Client verbunden wird, wird ein neuer Client-Handler fuer ihn erstellt.
+	 * Dieser ist verantwortlich fuer das interpretieren der Nachrichten des Clients
 	 * 
 	 */
 	@Override
@@ -48,7 +48,7 @@ public class Server implements Runnable {
 		}
 	}
 	/**
-	 * Erstellt einen MessageDispatcher für alle Clients um an diese die Nachrichten zu verteilen, die im Parameter übergeben werden.
+	 * Erstellt einen MessageDispatcher fuer alle Clients um an diese die Nachrichten zu verteilen, die im Parameter uebergeben werden.
 	 * @param messages: Eine ArrayList von Nachrichten die an die Clients verteilt werden sollen 
 	 */
 	public void dispatchMessage(ArrayList<Nachricht>  messages)
