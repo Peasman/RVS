@@ -6,11 +6,19 @@ import java.util.ArrayList;
 public class MessageDispatcher implements Runnable{
 	Socket myClient;
 	ArrayList<Nachricht> messages;
+	/**
+	 * 
+	 * @param pClient Der Client an den die Nachrichten gesendet werden
+	 * @param pMessages Die Nachrichten die versendet werden 
+	 */
 	public MessageDispatcher(Socket pClient, ArrayList<Nachricht> pMessages)
 	{
 		myClient = pClient;
 		messages = pMessages;
 	}
+	/**
+	 * Die Run Methode verteilt die Nachrichten die übergeben worden sind an den Client der übergeben wurde
+	 */
 	@Override
 	public void run()
 	{

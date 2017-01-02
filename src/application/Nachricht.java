@@ -1,4 +1,15 @@
 package application;
+/**
+ * Nachricht ist die Klasse die eine Nachricht darstellt, die auf dem Board landet
+ * Sie beinhaltet folgende Attribute:
+ * long timestamp: Die Zeit in ms in UTC
+ * String inhalt: Der Inhalt der Nachricht
+ * String Thema: Das Thema der Nachricht
+ * int length: Die Anzahl der Zeilen
+ * 
+ * @author Friedemann Runte
+ *
+ */
 public class Nachricht implements Comparable<Nachricht>
 {
 	long timestamp;

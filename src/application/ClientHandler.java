@@ -9,7 +9,11 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
-
+/**
+ * Der ClientHandler ist zum empfangen und Interpretieren der Nachrichten des Clients da
+ * @author Friedemann Runte, Diyar Omar
+ *
+ */
 public class ClientHandler implements Runnable {
 	Socket client;
 	Server myServer;
@@ -18,7 +22,14 @@ public class ClientHandler implements Runnable {
 		client = myClient;
 		myServer = myS;
 	}
-
+	/**
+	 * Die Run-Methode interpretiert die Nachrichten die vom Client Kommen wie es das Protokoll vorsieht:
+	 * "P" Signalisiert eine Anzahl an eintreffenden Nachrichten
+	 * "W" Signalisiert eine Anfrage nach Nachrichten die nach einem bestimmten Zeitpunkt geschrieben wurden
+	 * "T" Signalisiert eine Anfrage nach Nachrichten mit einem bestimmten Thema
+	 * "L" Signalisiert eine Anfrage nach Nachrichten mit den Themen die übergeben wurden
+	 * "X" Beendet die Verbindung
+	 */
 	@Override
 	public void run() {
 
@@ -47,10 +58,10 @@ public class ClientHandler implements Runnable {
 									long time = Long.parseLong(myST.nextToken());
 									String theme = "";
 									while (myST.hasMoreTokens()) {
-										theme = theme + myST.nextToken();
+										theme = theme +" "+ myST.nextToken();
 									}
 									nachricht = in.readLine();
-									for (int i = 1; i < n; i++) {
+									for (int i = 1; i < n-1; i++) {
 										System.out.println(i + " " + nachricht);
 										nachricht = nachricht + "\n" + in.readLine();
 									}
@@ -101,6 +112,7 @@ public class ClientHandler implements Runnable {
 
 											out.close();
 											client.close();
+											
 										} else {
 											out.println("E FORMAT ERROR");
 										}
