@@ -1,9 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class Server implements Runnable {
@@ -12,9 +15,11 @@ public class Server implements Runnable {
 	private ArrayList<Socket> myClients;
 	NachrichtenHandler myN = new NachrichtenHandler();
 	public Server(String pAddress, int port)
-	{
+	{ 
+		
 		address = new InetSocketAddress(pAddress,port);
-		System.out.println(address.toString());
+		System.out.println("Verbunden an: " + address.toString());
+	
 	}
 	/**
 	 * Standard Run Methode fuer den Server:
@@ -32,7 +37,7 @@ public class Server implements Runnable {
 			server = new ServerSocket();
 			server.bind(address);
 		} catch (IOException e1) {
-			System.out.println("Fehler beim Socket binden");
+			System.out.println("Das ServerSocket konnte nicht mit den angegebenen Parametern erstellt werden. Überprüfen sie ob ihre Eingaben gültig sind und ob die Addresse nicht bereits durch eine andere Anwendung belegt wurde");
 		}
 		while (true) {
 			try {
@@ -91,8 +96,13 @@ public class Server implements Runnable {
 	 */
 	public static void main(String args[])
 	{
+		try{
 		Thread myT = new Thread(new Server(args[0],Integer.parseInt(args[1])), "server");
 		myT.start();
+		} catch (ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("Die Anzahl der Parameter ist falsch! Bitte geben sie als ersten Parameter die gewünschte IP und als zweiten Parameter den Port auf dem der Server laufen soll!");
+		}
 	}
 
 }
